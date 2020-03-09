@@ -130,3 +130,75 @@ colorhsl* RGBtoHSL(color* couleur1) {
 
   return couleurconverti;
 }
+
+
+color* couleur_complementary(color* couleur1){
+  color* couleur_complementairy = malloc(sizeof(color));
+  colorhsl* couleurHSL = malloc(sizeof(colorhsl));
+  couleurHSL = RGBtoHSL(couleur1);
+  couleur_complementairy->H = abs((couleurHSL->H + 180) - 360 );
+  couleur_complementairy->S=couleurHSL->S;
+  couleur_complementairy->L=couleurHSL->L;
+  return HSLtoRGB(couleur_complementary);
+}
+
+color* couleur_split_complementary(color* couleur1){
+  color** couleur_split_complementairy = malloc(2*sizeof(color));
+  colorhsl* couleurHSL = malloc(sizeof(colorhsl));
+  couleurHSL = RGBtoHSL(couleur1);
+  couleur_split_complementairy[0]->H = abs((couleurHSL->H + 150) - 360 );
+  couleur_split_complementairy[0]->S=couleurHSL->S;
+  couleur_split_complementairy[0]->L=couleurHSL->L;
+  couleur_split_complementairy[1]->H = abs((couleurHSL->H + 210) - 360 );
+  couleur_split_complementairy[1]->S=couleurHSL->S;
+  couleur_split_complementairy[1]->L=couleurHSL->L;
+  return HSLtoRGB(couleur_complementary);
+}
+
+color* couleur_triadic(color* couleur1){
+  color** couleur_triadic = malloc(2*sizeof(color));
+  colorhsl* couleurHSL = malloc(sizeof(colorhsl));
+  couleurHSL = RGBtoHSL(couleur1);
+  couleur_triadic[0]->H = abs((couleurHSL->H + 120) - 360 );
+  couleur_triadic[0]->S=couleurHSL->S;
+  couleur_triadic[0]->L=couleurHSL->L;
+  couleur_triadic[1]->H = abs((couleurHSL->H + 240) - 360 );
+  couleur_triadic[1]->S=couleurHSL->S;
+  couleur_triadic[1]->L=couleurHSL->L;
+  return HSLtoRGB(couleur_triadic);
+}
+
+color* couleur_tetradic(color* couleur1){
+  color** couleur_tetradic = malloc(3*sizeof(color));
+  colorhsl* couleurHSL = malloc(sizeof(colorhsl));
+  couleurHSL = RGBtoHSL(couleur1);
+  couleur_tetradic[0]->H = abs((couleurHSL->H + 90) - 360 );
+  couleur_tetradic[0]->S=couleurHSL->S;
+  couleur_tetradic[0]->L=couleurHSL->L;
+  couleur_tetradic[1]->H = abs((couleurHSL->H + 180) - 360 );
+  couleur_tetradic[1]->S=couleurHSL->S;
+  couleur_tetradic[1]->L=couleurHSL->L;
+  couleur_tetradic[2]->H = abs((couleurHSL->H + 270) - 360 );
+  couleur_tetradic[2]->S=couleurHSL->S;
+  couleur_tetradic[2]->L=couleurHSL->L;
+  return HSLtoRGB(couleur_triadic);
+}
+
+color* couleur_analogous(color* couleur1){
+  color** couleur_tetradic = malloc(3*sizeof(color));
+  colorhsl* couleurHSL = malloc(sizeof(colorhsl));
+  couleurHSL = RGBtoHSL(couleur1);
+  couleur_analogous[0]->H = abs((couleurHSL->H + 30) - 360 );
+  couleur_analogous[0]->S=couleurHSL->S;
+  couleur_analogous[0]->L=couleurHSL->L;
+  couleur_analogous[1]->H = abs((couleurHSL->H + 60) - 360 );
+  couleur_analogous[1]->S=couleurHSL->S;
+  couleur_analogous[1]->L=couleurHSL->L;
+  couleur_analogous[2]->H = abs((couleurHSL->H + 90) - 360 );
+  couleur_analogous[2]->S=couleurHSL->S;
+  couleur_analogous[2]->L=couleurHSL->L;
+  return HSLtoRGB(couleur_triadic);
+}
+
+
+
